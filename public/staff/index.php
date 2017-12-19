@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Staff Directory</title>
-</head>
-<body>
+<?php require_once('../../private/initialize.php'); ?>
 
-</body>
-</html>
+<?php $page_title = 'Staff Menu'; ?>
+<?php include(SHARED_PATH . '/staff_header.php') ?>
+
+  <div id="content">
+
+  </div>
+
+<?php include('../../private/shared/staff_footer.php') ?>
