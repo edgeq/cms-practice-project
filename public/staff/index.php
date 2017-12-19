@@ -7,4 +7,4 @@
 
   </div>
 
-<?php include('../../private/shared/staff_footer.php') ?>
+<?php include(PRIVATE_PATH . '/shared/staff_footer.php') ?>
