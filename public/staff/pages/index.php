@@ -28,8 +28,8 @@ $pages = [
       <?php foreach ($pages as $page) {
      ?>
       <tr>
-        <td> <?php echo $page['page_id']; ?> </td>
-        <td> <?php echo $page['page_name']; ?> </td>
+        <td> <?php echo h($page['page_id']); ?> </td>
+        <td> <?php echo h($page['page_name']); ?> </td>
         <td> <?php echo $page['page_published'] == true ? 'published' : 'unpublished'; ?> </td>
         <td> <a href="<?php echo url_for('staff/pages/show.php?id=') . $page['page_id'] ?>">LINK</a> </td>
         <td> <a href="<?php echo h('staff/pages/show.php?author=') . u($page['author']) ?>"> <?php echo $page['author'] ?> </a></td>

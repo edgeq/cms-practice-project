@@ -31,17 +31,19 @@
         <th>Delete</th>
   	  </tr>
 
-      <?php foreach($subjects as $subject) { ?>
+      <?php foreach ($subjects as $subject) {
+    ?>
         <tr>
-          <td><?php echo $subject['id']; ?></td>
-          <td><?php echo $subject['position']; ?></td>
+          <td><?php echo h($subject['id']); ?></td>
+          <td><?php echo h($subject['position']); ?></td>
           <td><?php echo $subject['visible'] == 1 ? 'true' : 'false'; ?></td>
-    	    <td><?php echo $subject['menu_name']; ?></td>
-          <td><a class="action" href="<?php echo url_for('/staff/subjects/show.php?id=' . $subject['id']);?>">View</a></td>
-          <td><a class="action" href="<?php echo url_for('/staff/subjects/edit.php');?>">Edit</a></td>
-          <td><a class="action" href="<?php echo url_for('/staff/subjects/delete.php');?>">Delete</a></td>
+    	    <td><?php echo h($subject['menu_name']); ?></td>
+          <td><a class="action" href="<?php echo url_for('/staff/subjects/show.php?id=' . $subject['id']); ?>">View</a></td>
+          <td><a class="action" href="<?php echo url_for('/staff/subjects/edit.php'); ?>">Edit</a></td>
+          <td><a class="action" href="<?php echo url_for('/staff/subjects/delete.php'); ?>">Delete</a></td>
     	  </tr>
-      <?php } ?>
+      <?php
+} ?>
   	</table>
 
   </div>
