@@ -5,9 +5,10 @@
 
   <div id="content">
     <div id="main-menu">
-      <h2>Main Menu</h2>
+      <h1>Main Menu</h1>
       <ul>
         <li><a href="subjects/index.php">Subjects</a>
+        <li><a href="pages/index.php">Pages</a>
     </li>
       </ul>
     </div>
@@ -15,19 +16,20 @@
 
 <?php include(PRIVATE_PATH . '/shared/staff_footer.php') ?>
 
-<!--TODO: Link from /staff/index.php -> /staff/pages/index
-TODO: Add html and PHP for /staff/pages/index.php
-TODO: make sure to use header and staff_footer
-TODO: Use /staff/subjects as reference. NO copy/paste
-TODO: Use a $pages array to hold a list of pages
-TODO: Link each page to /staff/pages/show.php
-TODO: Include the page ID as a URL para
-TODO: Create /staff/pages/show.PHP
-TODO: retrieve and display the page ID
-TODO: Use file path techniques for including files (include, require_once, PATH_CONSTANTS)
-TODO: encode dynamic data used for links and HTML
-TODO USE URL techniques for creating links
-TODO set $page_title for all pages
+<!--
+DONE: Link from /staff/index.php -> /staff/pages/index
+DONE: Add html and PHP for /staff/pages/index.php
+DONE: make sure to use header and staff_footer
+DONE: Use /staff/subjects as reference. NO copy/paste
+DONE: Use a $pages array to hold a list of pages
+DONE: Link each page to /staff/pages/show.php
+DONE: Include the page ID as a URL para
+DONE: Create /staff/pages/show.PHP
+DONE: retrieve and display the page ID
+DONE: Use file path techniques for including files (include, require_once, PATH_CONSTANTS)
+DONE: encode dynamic data used for links and HTML
+DONE USE URL techniques for creating links
+DONE set $page_title for all pages
 
 
   -->
