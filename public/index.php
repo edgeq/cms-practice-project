@@ -11,12 +11,6 @@
 <body>
   <h1><code>Welcome to Root</code></h1>
 
-  <navigation>
-    <ul>
-      <li><a href="index.php">LINK</a></li>
-    </ul>
-  </navigation>
-
   <h2>This is  a project that will use the MVC paradigm while building a CMS.</h2>
 
   <footer>
