@@ -1,6 +1,14 @@
-<?php require_once('../../../private/initialize.php');
-?>
-
+<?php require_once('../../../private/initialize.php');?>
+<!--
+TODO: add form for /staff/pages/new.php
+TODO: add form for /staff/pages/edit.php
+TODO: add links to both pages
+TODO: editing requires a page_id. pass one in!
+TODO: add single-page form processing for both forms
+      if form was submitted, display form parameters and form
+TODO: display submitted menu_name on the forms
+TODO: **BONUS** display submitted position and visibility on forms
+ -->
 <?php
 $pages = [
   ['page_id' => '1', 'page_name' => 'Page 01', 'page_published' => true, 'author' => 'Pablo Escobar'],
