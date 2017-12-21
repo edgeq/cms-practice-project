@@ -17,7 +17,7 @@
     <h1>Subjects</h1>
 
     <div class="actions">
-      <a class="action" href=" <?php echo url_for('/staff/subjects/new.php') ?> ">Create New Subject</a>
+      <a class="action" href=" <?php echo url_for('/staff/subjects/new.php'); ?> ">Create New Subject</a>
     </div>
 
   	<table class="list">
