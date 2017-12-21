@@ -58,3 +58,20 @@ $pages = [
 </div>
 
 <?php include(SHARED_PATH . "/staff_footer.php"); ?>
+
+<!--
+MySQL Challenge
+TODO: Create a pages table in MySQL
+TODO: use the cms_pracitce db
+TODO: Pages
+  id: primary key
+  subject_id: integer
+  menu_name:string
+  position:integer
+  visible: boolean
+  content: text
+TODO: add indexes on all foreign keys
+TODO: add data for pages (source the .sql you end up writing or use SQLqworkbench )
+TODO: try some CRUD commands
+
+-->

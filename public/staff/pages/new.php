@@ -34,7 +34,7 @@ if (is_post_request()) {
     <form action="" method="post">
       <dl>
         <dt>Page Name</dt>
-        <dd><input type="text" name="page_name" value="" /></dd>
+        <dd><input type="text" name="page_name" value=" <?php echo h($page_name); ?> " /></dd>
       </dl>
       <dl>
         <dt>Author</dt>
