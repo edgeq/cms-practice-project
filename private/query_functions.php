@@ -17,7 +17,7 @@ function find_all_pages()
     global $db;
 
     $sql = "SELECT * FROM pages ";
-    $sql .= "ORDER BY page_id ASC";
+    $sql .= "ORDER BY subject_id, position ASC";
     $result = mysqli_query($db, $sql);
     confirm_db_query($result);
     return $result;
@@ -32,7 +32,5 @@ DONE: Use a while loop to get through result set
 DONE: Free result set when done
 DONE: Confirm the database connection is being closed
 DONE: Handle errors on the connection and query_functions
-
-
 
 */

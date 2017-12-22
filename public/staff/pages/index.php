@@ -29,6 +29,8 @@ $pages_set = find_all_pages();
     <table class="list">
       <tr>
         <th>Page ID</th>
+        <th>Subject ID</th>
+        <th>Position</th>
         <th>Page Name</th>
         <th>Published</th>
         <th>URL</th>
@@ -38,6 +40,8 @@ $pages_set = find_all_pages();
      ?>
       <tr>
         <td> <?php echo h($page['page_id']); ?> </td>
+        <td> <?php echo h($page['subject_id']); ?> </td>
+        <td> <?php echo h($page['position']); ?> </td>
         <td> <?php echo h($page['page_name']); ?> </td>
         <td> <?php echo $page['published'] == true ? 'published' : 'unpublished'; ?> </td>
         <td> <a href="<?php echo url_for('staff/pages/show.php?id=') . $page['page_id'] ?>">LINK</a> </td>
@@ -49,7 +53,7 @@ $pages_set = find_all_pages();
 
     <?php
       mysqli_free_result($pages_set);
-        db_disconnect($db);
+
      ?>
   </div>
 
