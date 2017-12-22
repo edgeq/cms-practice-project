@@ -61,17 +61,17 @@ $pages = [
 
 <!--
 MySQL Challenge
-TODO: Create a pages table in MySQL
-TODO: use the cms_pracitce db
-TODO: Pages
+DONE: Create a pages table in MySQL
+DONE: use the cms_pracitce db
+DONE: Pages
   id: primary key
   subject_id: integer
   menu_name:string
   position:integer
   visible: boolean
   content: text
-TODO: add indexes on all foreign keys
-TODO: add data for pages (source the .sql you end up writing or use SQLqworkbench )
-TODO: try some CRUD commands
+DONE: add indexes on all foreign keys
+DONE: add data for pages (source the .sql you end up writing or use SQLqworkbench )
+DONE: try some CRUD commands
 
 -->

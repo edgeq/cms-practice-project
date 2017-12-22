@@ -1,7 +1,7 @@
 <?php require_once('../../../private/initialize.php');
 
 
-$page_id = $_GET['page_id'];
+
 $page_name = '';
 $page_author = '';
 $published = '';
