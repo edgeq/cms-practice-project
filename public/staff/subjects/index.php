@@ -45,6 +45,7 @@
 
 <?php
   mysqli_free_result($subject_set);
+  db_disconnect($db);
  ?>
 
 
