@@ -16,6 +16,7 @@ if (is_post_request()) {
     $page['page_id'] = $page_id;
     $page['page_name'] = $_POST['page_name'] ?? '';
     $page['page_content'] = $_POST['page_content'] ?? '';
+    $page['subject_id'] = $_POST['subject_id'] ?? '';
     $page['published'] = $_POST['published'] ?? '';
 
     $result = update_page($page);
@@ -46,11 +47,27 @@ if (is_post_request()) {
           </textarea>
         </dd>
       </dl>
+
+      <dl>
+        <dt>Subject</dt>
+        <dd>
+          <select name="subject_id" id="subject_id">
+            <option value="">-choose a subject-</option>
+            <option value="1">About CMS</option>
+            <option value="2">Contact</option>
+            <option value="3">Blogs</option>
+            <option value="4">Portfolio</option>
+            <option value="5">Content</option>
+
+          </select>
+        </dd>
+      </dl>
+
       <dl>
         <dt>Published</dt>
         <dd>
           <input type="hidden" name="published" value="0" />
-          <input type="checkbox" name="published" value="1<?php if ($subject['published'] == "1") {
+          <input type="checkbox" name="published" value="1<?php if ($page['published'] == "1") {
     echo " checked";
 } ?>" />
         </dd>

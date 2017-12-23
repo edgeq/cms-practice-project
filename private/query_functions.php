@@ -20,6 +20,27 @@ function find_all_pages()
     confirm_db_query($result);
     return $result;
 }
+function update_page($page)
+{
+    global $db;
+    $sql = "UPDATE pages SET ";
+    $sql .= "page_name='" . $page['page_name'] . "', ";
+    $sql .= "subject_id='" . $page['subject_id'] . "', ";
+    $sql .= "page_content='" . $page['page_content'] . "', ";
+    $sql .= "published='" . $page['published'] . "' ";
+    $sql .= "WHERE page_id='" . $page['page_id'] . "' ";
+    $sql .= "LIMIT 1";
+
+    $result = mysqli_query($db, $sql);
+    //For UPDATE statements, the result is T or F.
+    if ($result) {
+        return true;
+    } else {
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit;
+    }
+}
 function find_page_by_id($id)
 {
     global $db;
@@ -63,19 +84,20 @@ function insert_subj($subject)
         exit;
     }
 }
-
-function update_page($page)
+function insert_page($page)
 {
     global $db;
-    $sql = "UPDATE pages SET ";
-    $sql .= "page_name='" . $page['page_name'] . "', ";
-    $sql .= "page_content='" . $page['page_content'] . "', ";
-    $sql .= "published='" . $subject['published'] . "' ";
-    $sql .= "WHERE page_id='" . $page['page_id'] . "' ";
-    $sql .= "LIMIT 1";
-
+    $sql = "INSERT INTO pages ";
+    $sql .= "(page_name, subject_id, published, page_content) ";
+    $sql .= "VALUES (";
+    $sql .= "'{$page['page_name']}'," ;
+    $sql .= "'{$page['subject_id']}',";
+    $sql .= "'{$page['published']}',";
+    $sql .= "'{$page['page_content']}'";
+    $sql .= ")";
     $result = mysqli_query($db, $sql);
-    //For UPDATE statements, the result is T or F.
+    //INSERTS result in T F
+
     if ($result) {
         return true;
     } else {
@@ -84,7 +106,6 @@ function update_page($page)
         exit;
     }
 }
-
 function update_subject($subject)
 {
     global $db;
@@ -105,7 +126,6 @@ function update_subject($subject)
         exit;
     }
 }
-
 function delete_page($id)
 {
     global $db;
@@ -125,7 +145,6 @@ function delete_page($id)
         exit;
     }
 }
-
 function delete_subject($id)
 {
     global $db;
@@ -159,11 +178,11 @@ DONE: Handle errors on the connection and query_functions
 */
 
 /*
-TODO: develop CRUD for pages
+DONE: develop CRUD for pages
 DONE: read back a single page '/staff/pages/show.php'
 DONE: create a page '/staff/pages/new.php'
 DONE: update a page '/staff/pages/edit.php'
-TODO: delete a page '/staff/pages/delete.php'
+DONE: delete a page '/staff/pages/delete.php'
 TODO: work on Select option for position on each pages
   look through the db to see how many pages and loop through count of pages to display equal amount of options.
   Check to see if the current value matches at each loop position

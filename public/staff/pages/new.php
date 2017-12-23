@@ -1,25 +1,19 @@
 <?php require_once('../../../private/initialize.php');
-
-
-
-$page_name = '';
-$page_author = '';
-$published = '';
-$content = '';
-
+// <br /><b>Notice</b>:  Undefined variable: page_name in <b>/Applications/MAMP/htdocs/cms-practice-project/public/staff/pages/new.php</b> on line <b>33</b><br />
 if (is_post_request()) {
 
   // Handle form values sent by new.php
+    $page = [];
+    $page['page_name'] = $_POST['page_name'] ?? '';
+    $page['subject_id'] = $_POST['subject_id'] ?? '';
+    $page['published'] = $_POST['published'] ?? '';
+    $page['page_content'] = $_POST['page_content'] ?? '';
 
-    $page_name = $_POST['page_name'] ?? '';
-    $page_author = $_POST['page_author'] ?? '';
-    $published = $_POST['published'] ?? '';
-    $content = $_POST['content'] ?? '';
-
-    echo "Form parameters<br />";
-    echo "Page name: " . $page_name . "<br />";
-    echo "Author: " . $page_author . "<br />";
-    echo "Published: " . $published . "<br />";
+    $result = insert_page($page);
+    $new_id = mysqli_insert_id($db);
+    redirect_to(url_for('/staff/pages/show.php?page_id=' . $new_id));
+} else {
+    // redirect_to(url_for('/staff/pages/new.php'));
 }
 
 ?>
@@ -36,17 +30,20 @@ if (is_post_request()) {
     <form action="" method="post">
       <dl>
         <dt>Page Name</dt>
-        <dd><input type="text" name="page_name" value=" <?php echo h($page_name); ?> " /></dd>
+        <dd><input type="text" name="page_name" value="" /></dd>
       </dl>
+
       <dl>
-        <dt>Author</dt>
+        <dt>Subject</dt>
         <dd>
-          <select name="page_author" id="page_author">
-            <option value="">-choose an author-</option>
-            <option value="Pablo Escobar">Pablo Escobar</option>
-            <option value="Che Guevara">Che Guevara</option>
-            <option value="Omar Rodriguez">Omar Rodriguez</option>
-            <option value="Julio Cortazar">Julio Cortazar</option>
+          <select name="subject_id" id="subject_id">
+            <option value="">-choose a subject-</option>
+            <option value="1">About CMS</option>
+            <option value="2">Contact</option>
+            <option value="3">Blogs</option>
+            <option value="4">Portfolio</option>
+            <option value="5">Content</option>
+
           </select>
         </dd>
       </dl>
@@ -54,7 +51,7 @@ if (is_post_request()) {
       <dl>
         <dt>Content</dt>
           <dd>
-            <textarea name="" id="" cols="30" rows="10" value=""> </textarea>
+            <textarea name="page_content" id="page_content" cols="30" rows="10" value=""> </textarea>
           </dd>
 
       </dl>

@@ -1,6 +1,6 @@
 <?php require_once('../../../private/initialize.php'); ?>
 <?php
-$id = isset($_GET['id']) ? $_GET['id'] : '1';
+$id = isset($_GET['page_id']) ? $_GET['page_id'] : '1';
 
 $page = find_page_by_id($id);
   ?>
