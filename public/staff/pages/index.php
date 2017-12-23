@@ -35,6 +35,7 @@ $pages_set = find_all_pages();
         <th>Published</th>
         <th>URL</th>
         <th>EDIT</th>
+        <th>DELETE</th>
       </tr>
       <?php while ($page = mysqli_fetch_assoc($pages_set)) {
      ?>
@@ -44,8 +45,9 @@ $pages_set = find_all_pages();
         <td> <?php echo h($page['position']); ?> </td>
         <td> <?php echo h($page['page_name']); ?> </td>
         <td> <?php echo $page['published'] == true ? 'published' : 'unpublished'; ?> </td>
-        <td> <a href="<?php echo url_for('staff/pages/show.php?id=') . $page['page_id'] ?>">LINK</a> </td>
+        <td> <a href="<?php echo url_for('staff/pages/show.php?id=') . $page['page_id'] ?>">View</a> </td>
         <td><a class="action" href="<?php echo url_for('/staff/pages/edit.php?page_id=' . h(u($page['page_id']))); ?>">Edit</a></td>
+        <td><a class="action" href="<?php echo url_for('/staff/pages/delete.php?page_id=' . h(u($page['page_id']))); ?>">Delete</a></td>
       </tr>
     <?php
  } ?>

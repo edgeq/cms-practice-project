@@ -2,9 +2,6 @@
 
 <?php //$id=$_GET['id'];
 $id = isset($_GET['id']) ? $_GET['id'] : '1';
-
-
-
 $subject = find_subj_by_id($id);
 ?>
 <?php $page_title = "Subject " . $id ?>

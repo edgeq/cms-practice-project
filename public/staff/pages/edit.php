@@ -7,22 +7,21 @@ if (!isset($_GET['page_id'])) {
 }
 
 $page_id = $_GET['page_id'];
-$page_name = '';
-$page_author = '';
-$published = '';
+
 
 if (is_post_request()) {
 
   // Handle form values sent by new.php
+    $page = [];
+    $page['page_id'] = $page_id;
+    $page['page_name'] = $_POST['page_name'] ?? '';
+    $page['page_content'] = $_POST['page_content'] ?? '';
+    $page['published'] = $_POST['published'] ?? '';
 
-    $page_name = $_POST['page_name'] ?? '';
-    $page_author = $_POST['page_author'] ?? '';
-    $published = $_POST['published'] ?? '';
-
-    echo "Form parameters<br />";
-    echo "Page name: " . $page_name . "<br />";
-    echo "Author: " . $page_author . "<br />";
-    echo "Published: " . $published . "<br />";
+    $result = update_page($page);
+    redirect_to(url_for('/staff/pages/show.php?page_id=' . $page_id));
+} else {
+    $page = find_page_by_id($page_id);
 }
 ?>
 <?php $page_title = 'Edit Page'; ?>
@@ -37,25 +36,23 @@ if (is_post_request()) {
     <form action=" <?php echo url_for('/staff/pages/edit.php?page_id=' . h(u($page_id))); ?> " method="post">
       <dl>
         <dt>Page Name</dt>
-        <dd><input type="text" name="page_name" value="" /></dd>
+        <dd><input type="text" name="page_name" value="" placeholder="<?php echo h($page['page_name']); ?>" /></dd>
       </dl>
       <dl>
-        <dt>Author</dt>
+        <dt>Content</dt>
         <dd>
-          <select name="page_author" id="page_author">
-            <option value="">-choose an author-</option>
-            <option value="Pablo Escobar">Pablo Escobar</option>
-            <option value="Che Guevara">Che Guevara</option>
-            <option value="Omar Rodriguez">Omar Rodriguez</option>
-            <option value="Julio Cortazar">Julio Cortazar</option>
-          </select>
+          <textarea rows="24" cols="62" name="page_content" id="page_content">
+              <?php echo h($page['page_content']); ?>
+          </textarea>
         </dd>
       </dl>
       <dl>
         <dt>Published</dt>
         <dd>
           <input type="hidden" name="published" value="0" />
-          <input type="checkbox" name="published" value="1" />
+          <input type="checkbox" name="published" value="1<?php if ($subject['published'] == "1") {
+    echo " checked";
+} ?>" />
         </dd>
       </dl>
       <div id="operations">

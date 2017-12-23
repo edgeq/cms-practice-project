@@ -5,6 +5,7 @@
 $page_name = '';
 $page_author = '';
 $published = '';
+$content = '';
 
 if (is_post_request()) {
 
@@ -13,6 +14,7 @@ if (is_post_request()) {
     $page_name = $_POST['page_name'] ?? '';
     $page_author = $_POST['page_author'] ?? '';
     $published = $_POST['published'] ?? '';
+    $content = $_POST['content'] ?? '';
 
     echo "Form parameters<br />";
     echo "Page name: " . $page_name . "<br />";
@@ -48,6 +50,15 @@ if (is_post_request()) {
           </select>
         </dd>
       </dl>
+
+      <dl>
+        <dt>Content</dt>
+          <dd>
+            <textarea name="" id="" cols="30" rows="10" value=""> </textarea>
+          </dd>
+
+      </dl>
+
       <dl>
         <dt>Published</dt>
         <dd>

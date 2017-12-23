@@ -24,7 +24,7 @@ $subject['position'] = $subject_count;
         <dt>Menu Name</dt>
         <dd><input type="text" name="menu_name" value="" /></dd>
       </dl>
-      <dl>
+    <dl>
         <dt>Position</dt>
         <dd>
           <select name="position">

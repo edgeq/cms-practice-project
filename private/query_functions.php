@@ -11,7 +11,6 @@ function find_all_subjects()
     confirm_db_query($result);
     return $result;
 }
-
 function find_all_pages()
 {
     global $db;
@@ -21,7 +20,17 @@ function find_all_pages()
     confirm_db_query($result);
     return $result;
 }
-
+function find_page_by_id($id)
+{
+    global $db;
+    $sql = "SELECT * FROM pages ";
+    $sql .= "WHERE page_id='" .$id ."'";
+    $result = mysqli_query($db, $sql);
+    confirm_db_query($result);
+    $page = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+    return $page;
+}
 function find_subj_by_id($id)
 {
     global $db;
@@ -33,7 +42,6 @@ function find_subj_by_id($id)
     mysqli_free_result($result);
     return $subject;
 }
-
 function insert_subj($subject)
 {
     global $db;
@@ -47,6 +55,27 @@ function insert_subj($subject)
     $result = mysqli_query($db, $sql);
     //INSERTS result in T F
 
+    if ($result) {
+        return true;
+    } else {
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit;
+    }
+}
+
+function update_page($page)
+{
+    global $db;
+    $sql = "UPDATE pages SET ";
+    $sql .= "page_name='" . $page['page_name'] . "', ";
+    $sql .= "page_content='" . $page['page_content'] . "', ";
+    $sql .= "published='" . $subject['published'] . "' ";
+    $sql .= "WHERE page_id='" . $page['page_id'] . "' ";
+    $sql .= "LIMIT 1";
+
+    $result = mysqli_query($db, $sql);
+    //For UPDATE statements, the result is T or F.
     if ($result) {
         return true;
     } else {
@@ -71,6 +100,26 @@ function update_subject($subject)
     if ($result) {
         return true;
     } else {
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit;
+    }
+}
+
+function delete_page($id)
+{
+    global $db;
+    $sql = "DELETE from pages ";
+    $sql .= "WHERE page_id='" . $id . "' ";
+    $sql .= "LIMIT 1";
+
+    $result = mysqli_query($db, $sql);
+
+    //DELETE requests result in T or F.
+    if ($result) {
+        return true;
+    } else {
+        //DELETE failed
         echo mysqli_error($db);
         db_disconnect($db);
         exit;
@@ -106,5 +155,20 @@ DONE: Use a while loop to get through result set
 DONE: Free result set when done
 DONE: Confirm the database connection is being closed
 DONE: Handle errors on the connection and query_functions
+
+*/
+
+/*
+TODO: develop CRUD for pages
+DONE: read back a single page '/staff/pages/show.php'
+DONE: create a page '/staff/pages/new.php'
+DONE: update a page '/staff/pages/edit.php'
+TODO: delete a page '/staff/pages/delete.php'
+TODO: work on Select option for position on each pages
+  look through the db to see how many pages and loop through count of pages to display equal amount of options.
+  Check to see if the current value matches at each loop position
+TODO: **BONUS** display subject names instead of subject_id on index.php and show.php
+TODO: create a select option for subjects - use a while loop.
+
 
 */
