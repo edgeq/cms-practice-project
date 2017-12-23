@@ -77,6 +77,26 @@ function update_subject($subject)
     }
 }
 
+function delete_subject($id)
+{
+    global $db;
+    $sql = "DELETE from subjects ";
+    $sql .= "WHERE id='" . $id . "' ";
+    $sql .= "LIMIT 1";
+
+    $result = mysqli_query($db, $sql);
+
+    //DELETE requests result in T or F.
+    if ($result) {
+        return true;
+    } else {
+        //DELETE failed
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit;
+    }
+}
+
 /*
 DONE: Connect to db, retrieve records from pages, list out page attributes
 DONE: use the existing db connection (reference initialize.php for connection var)
